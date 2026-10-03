@@ -12,7 +12,7 @@
 	},
 
 	"workspaceFolder": "/home/ws",
-    "workspaceMount": "source=${localWorkspaceFolder}/${PATH_TO_SRC_FOLDER},target=/home/ws/src,type=bind",
+    "workspaceMount": "source=${localWorkspaceFolder}/{PATH_TO_SRC_FOLDER},target=/home/ws/src,type=bind",
 
 	"runArgs": [
 		"--rm",
