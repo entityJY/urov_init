@@ -1,0 +1,26 @@
+FROM arm64v8/ros:humble
+
+ARG vscode
+RUN if [[ -z "$devcontainercli" ]] ; then \
+    printf "\nERROR: This Dockerfile needs to be built with VS Code !" && exit 1; \
+    else printf "VS Code is detected: $devcontainercli"; \
+fi
+
+USER root
+
+RUN sudo apt-get update
+RUN sudo apt-get -y install python3-opencv
+RUN sudo apt-get -y install ros-humble-cv-bridge
+RUN sudo apt-get -y install python3-pip
+RUN pip install pyserial
+
+# for mavros
+RUN sudo apt-get install -y python3-vcstool python3-rosinstall-generator python3-osrf-pycommon
+RUN sudo apt-get install -y libgeographic-dev
+RUN sudo apt-get install -y geographiclib-tools
+
+RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+RUN echo "source /home/mavros/install/setup.bash" >> ~/.bashrc
+RUN echo "alias build='colcon build --symlink-install; source install/setup.bash'" >> ~/.bashrc
+RUN echo "alias setup='source install/setup.bash'" >> ~/.bashrc
+RUN echo "alias update='sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y'" >> ~/.bashrc

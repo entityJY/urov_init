@@ -1,0 +1,50 @@
+{
+	"name": "ROS 2 Development Container",
+
+	"build": {
+		"context": "../",
+		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+		"dockerfile": "Containerfile",
+		"args": {
+          // set devcontainer-cli arg for Dockerfile
+          "devcontainercli": "true"
+      	}
+	},
+
+	"workspaceFolder": "/home/ws",
+    "workspaceMount": "source=${localWorkspaceFolder}/src,target=/home/ws/src,type=bind",
+
+	"runArgs": [
+		"--rm",
+		"--name",
+		"ros2"
+	],
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			// "settings": {
+			// 	"files.exclude": {
+			// 		"build/": true,
+			// 		"install/": true,
+			// 		"log/": true
+			// 	}
+			// },
+			"extensions": [
+				"Ranch-Hand-Robotics.rde-pack",
+				"twxs.cmake",
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-themes",
+				"eamodio.gitlens",
+				"donjayamanne.python-extension-pack"
+			]
+		}
+	},
+
+	"mounts": [
+		"source=${localWorkspaceFolder}/cache/humble/build,target=/home/ws/build,type=bind",
+        "source=${localWorkspaceFolder}/cache/humble/install,target=/home/ws/install,type=bind",
+        "source=${localWorkspaceFolder}/cache/humble/log,target=/home/ws/log,type=bind",
+		"source=${localWorkspaceFolder}/cache/mavros,target=/home/mavros,type=bind"
+    ]
+}
