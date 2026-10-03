@@ -12,7 +12,7 @@
 	},
 
 	"workspaceFolder": "/home/ws",
-    "workspaceMount": "source=${localWorkspaceFolder}/src,target=/home/ws/src,type=bind",
+    "workspaceMount": "source=${localWorkspaceFolder}/${PATH_TO_SRC_FOLDER},target=/home/ws/src,type=bind",
 
 	"runArgs": [
 		"--rm",
@@ -23,13 +23,6 @@
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
-			// "settings": {
-			// 	"files.exclude": {
-			// 		"build/": true,
-			// 		"install/": true,
-			// 		"log/": true
-			// 	}
-			// },
 			"extensions": [
 				"Ranch-Hand-Robotics.rde-pack",
 				"twxs.cmake",
@@ -44,7 +37,6 @@
 	"mounts": [
 		"source=${localWorkspaceFolder}/cache/humble/build,target=/home/ws/build,type=bind",
         "source=${localWorkspaceFolder}/cache/humble/install,target=/home/ws/install,type=bind",
-        "source=${localWorkspaceFolder}/cache/humble/log,target=/home/ws/log,type=bind",
-		"source=${localWorkspaceFolder}/cache/mavros,target=/home/mavros,type=bind"
+        "source=${localWorkspaceFolder}/cache/humble/log,target=/home/ws/log,type=bind"
     ]
 }
